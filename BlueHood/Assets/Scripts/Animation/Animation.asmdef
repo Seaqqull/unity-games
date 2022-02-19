@@ -1,0 +1,17 @@
+{
+    "name": "Animation",
+    "rootNamespace": "BlueHood.Animation",
+    "references": [
+        "GUID:dd15393ac0b5349fbb4986416ea48cbc",
+        "GUID:c24fc1baf074141aaaa50f4bd8b43684"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

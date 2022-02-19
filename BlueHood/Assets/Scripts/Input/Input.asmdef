@@ -1,0 +1,16 @@
+{
+    "name": "Input",
+    "rootNamespace": "BlueHood.Input",
+    "references": [
+        "GUID:dd15393ac0b5349fbb4986416ea48cbc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
