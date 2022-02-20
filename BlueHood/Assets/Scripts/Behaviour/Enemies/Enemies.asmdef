@@ -1,9 +1,12 @@
 {
-    "name": "Managers",
-    "rootNamespace": "BlueHood.Managers",
+    "name": "Enemies",
+    "rootNamespace": "BlueHood.Behaviour.Enemies",
     "references": [
+        "GUID:6e346f4fc5b364f0e8db0cfe09997066",
         "GUID:dd15393ac0b5349fbb4986416ea48cbc",
-        "GUID:6e346f4fc5b364f0e8db0cfe09997066"
+        "GUID:efa45043feb7e4147a305b73b5cea642",
+        "GUID:c24fc1baf074141aaaa50f4bd8b43684",
+        "GUID:46e9cafc0892c4fa588d3607e9d67730"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

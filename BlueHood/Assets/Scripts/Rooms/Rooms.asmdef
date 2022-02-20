@@ -1,9 +1,10 @@
 {
-    "name": "Managers",
-    "rootNamespace": "BlueHood.Managers",
+    "name": "Rooms",
+    "rootNamespace": "BlueHood.Rooms",
     "references": [
         "GUID:dd15393ac0b5349fbb4986416ea48cbc",
-        "GUID:6e346f4fc5b364f0e8db0cfe09997066"
+        "GUID:6e346f4fc5b364f0e8db0cfe09997066",
+        "GUID:14bb4e10426ed40fc99222c4e12d86e8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

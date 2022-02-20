@@ -1,9 +1,9 @@
 {
-    "name": "Managers",
-    "rootNamespace": "BlueHood.Managers",
+    "name": "Navigation",
+    "rootNamespace": "BlueHood.Navigation",
     "references": [
-        "GUID:dd15393ac0b5349fbb4986416ea48cbc",
-        "GUID:6e346f4fc5b364f0e8db0cfe09997066"
+        "GUID:1382210f8bb8047818e6ab1c12a508d0",
+        "GUID:dd15393ac0b5349fbb4986416ea48cbc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

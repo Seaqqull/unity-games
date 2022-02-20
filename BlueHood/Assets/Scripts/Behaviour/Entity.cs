@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
+using System;
 
 
 namespace BlueHood.Behaviour
 {
-    public class Entity : Base.BaseBehaviour, Utility.Interfaces.IDamageable
+    public class Entity : Base.BaseBehaviour, Utility.Interfaces.IDamageable, Utility.Interfaces.IRunLater
     {
         [SerializeField] protected  Health _health;
         [SerializeField] protected Transform _gfx;
@@ -72,5 +74,27 @@ namespace BlueHood.Behaviour
 
             _body.AddForce(direction * _body.mass, force);
         }
+        
+        
+        #region RunLater
+        public void RunLater(Action method, float waitSeconds)
+        {
+            RunLaterValued(method, waitSeconds);
+        }
+
+        public Coroutine RunLaterValued(Action method, float waitSeconds)
+        {
+            if ((waitSeconds < 0) || (method == null))
+                return null;
+
+            return StartCoroutine(RunLaterCoroutine(method, waitSeconds));
+        }
+
+        public IEnumerator RunLaterCoroutine(Action method, float waitSeconds)
+        {
+            yield return new WaitForSeconds(waitSeconds);
+            method();
+        }        
+        #endregion
     }
 }

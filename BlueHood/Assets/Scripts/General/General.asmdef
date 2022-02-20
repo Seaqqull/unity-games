@@ -1,9 +1,8 @@
 {
-    "name": "Managers",
-    "rootNamespace": "BlueHood.Managers",
+    "name": "General",
+    "rootNamespace": "BlueHood.General",
     "references": [
-        "GUID:dd15393ac0b5349fbb4986416ea48cbc",
-        "GUID:6e346f4fc5b364f0e8db0cfe09997066"
+        "GUID:dd15393ac0b5349fbb4986416ea48cbc"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
