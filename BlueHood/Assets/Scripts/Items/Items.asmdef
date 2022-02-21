@@ -1,0 +1,20 @@
+{
+    "name": "Items",
+    "rootNamespace": "BlueHood.Items",
+    "references": [
+        "GUID:dd15393ac0b5349fbb4986416ea48cbc",
+        "GUID:b3c6c81a0619e4b7dba9c30dad203cf6",
+        "GUID:7307bf472531d46dc9eea772c81fcdce",
+        "GUID:6e346f4fc5b364f0e8db0cfe09997066",
+        "GUID:c24fc1baf074141aaaa50f4bd8b43684"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
