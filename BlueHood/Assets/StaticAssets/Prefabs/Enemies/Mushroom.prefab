@@ -102,6 +102,100 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &15541675788812335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789560920585709328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7a1e0b61b4c438241f768c424314f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2113819014811513778}
+        m_TargetAssemblyTypeName: BlueHood.Behaviour.Entity, Behaviour
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2437864718248166278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789560920585709328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04599324f15a543e9a212e9199eb3cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reverse: 0
+--- !u!114 &5459034375395144171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789560920585709328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0c9af5f30b4280a818043ef7d990d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2821039593791186484}
+        m_TargetAssemblyTypeName: BlueHood.Weapons.DamageableWeapon, Weapons
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5953521643123411235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789560920585709328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994a3e7157fb4567a147f9c9597e68db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2113819014811513778}
+        m_TargetAssemblyTypeName: BlueHood.Behaviour.Enemies.Enemy, Enemies
+        m_MethodName: OnEndAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &7756910951375248908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 895086345802005581, guid: 4999bed3e51f445f2b02ed10ac241ed0, type: 3}
@@ -169,14 +263,14 @@ MonoBehaviour:
   _type: 2
   _state: 0
   _spectation: 0
-  _target: {fileID: 0}
   _animator: {fileID: 4737711577130612638}
-  _path: {fileID: 0}
+  _navigation: {fileID: 0}
   _movementSpeed: 4.5
-  _minimumPathDistance: 0.4
+  _minimumPathDistance: 0.8
+  _target: {fileID: 0}
   _minimumTargetDistance: 0.5
   _distanceToTarget: 0
-  _targetDetectionDistance: {x: 4, y: 10}
+  _targetDetectionDistance: {x: 3, y: 6}
   _onlyDirectDetection: 1
   _wasInPursuit: 0
 --- !u!114 &2499369223882927150
@@ -208,15 +302,15 @@ MonoBehaviour:
   autoRepath:
     mode: 1
     interval: 0.5
-    sensitivity: 10
+    sensitivity: 5
     maximumInterval: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 0.5
-  endReachedDistance: 0.5
+  slowdownDistance: 1.2
+  pickNextWaypointDist: 1
+  endReachedDistance: 0.8
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -249,6 +343,26 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &2821039593791186484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998227081684848893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879daee3ca19493cb8682ad7cad7cbf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivot: {fileID: 8861037218930336941}
+  _hitObject: {fileID: 0}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _range: 3
+  _damage: 1
+  _forcePower: 20
 --- !u!114 &8741086820730442608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,5 +378,10 @@ MonoBehaviour:
   _onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _maxHealth: 0
-  _health: 0
+  _maxHealth: 2
+  _health: 2
+--- !u!4 &8861037218930336941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2104679954670159596, guid: 4999bed3e51f445f2b02ed10ac241ed0, type: 3}
+  m_PrefabInstance: {fileID: 7479890895213142593}
+  m_PrefabAsset: {fileID: 0}

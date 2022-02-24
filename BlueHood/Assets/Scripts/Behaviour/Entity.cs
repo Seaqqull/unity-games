@@ -12,13 +12,20 @@ namespace BlueHood.Behaviour
         [Header("Events")]
         [SerializeField] protected UnityEngine.Events.UnityEvent _onDead;
         
-        protected bool _movementPossible;
         protected Rigidbody2D _body;
-
+        
         public Health Health { get => _health; }
         public bool IsDead {get; protected set;}
-        
-        
+        public GameObject GameObject
+        {
+            get => GameObj;
+        }
+        public Rigidbody2D Body
+        {
+            get => _body;
+        }
+
+
         protected override void Awake()
         {
             base.Awake();
@@ -41,10 +48,10 @@ namespace BlueHood.Behaviour
         
         protected virtual void OnDeath()
         {
-            _movementPossible = false;
+            _body.velocity = Vector2.zero;
             IsDead = true;
 
-            _onDead.Invoke();
+            _onDead?.Invoke();
         }
 
         protected virtual bool CheckDead()
@@ -63,16 +70,21 @@ namespace BlueHood.Behaviour
         }
 
 
+        public void Die()
+        {
+            OnDeath();
+            
+            Destroy(GameObj);
+        }
+
         public void PerformDamage(int amount)
         {
             _health.ModifyHealth(amount);
         }
 
-        public virtual void ApplyForce(Vector3 direction, ForceMode2D force = ForceMode2D.Force)
+        public virtual void ApplyForce(Vector2 direction, float power, ForceMode2D force = ForceMode2D.Force)
         {
-            _movementPossible = false;
-
-            _body.AddForce(direction * _body.mass, force);
+            _body.AddForce(direction * power, force);
         }
         
         

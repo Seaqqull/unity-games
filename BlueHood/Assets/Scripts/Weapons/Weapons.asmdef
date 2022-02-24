@@ -1,0 +1,16 @@
+{
+    "name": "Weapons",
+    "rootNamespace": "BlueHood.Weapons",
+    "references": [
+        "GUID:c24fc1baf074141aaaa50f4bd8b43684"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

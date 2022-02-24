@@ -25,13 +25,6 @@ namespace BlueHood.Behaviour.Enemies
                     (_target != null) && (_distanceToTarget > _minimumTargetDistance));
         }
 
-        // protected override void OnUpdateMovement()
-        // {
-        //     base.OnUpdateMovement();
-        //
-        //     _aiPath.destination = _target.position;
-        // }
-
         protected override void OnUpdatePath(Vector2 destination)
         {
             _aiPath.destination = destination;

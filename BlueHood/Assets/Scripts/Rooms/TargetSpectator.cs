@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BlueHood.Rooms
 {
-    public class RoomSpectator : MonoBehaviour
+    public class TargetSpectator : MonoBehaviour
     {
         [SerializeField] private List<Behaviour.Enemies.Enemy> _subscribers;
         [SerializeField] private Behaviour.Entity _target;
@@ -38,12 +38,15 @@ namespace BlueHood.Rooms
                     (_target.Position.x < _subscribers[i].Position.x) ?  ViewDirection.Left :  ViewDirection.Center;
                 targetDistance = Vector2.SqrMagnitude((_target.Position - _subscribers[i].Position));
 
-                if((!_subscribers[i].DirectDetectionOnly && targetDistance <= _subscribers[i].DetectionDistance.y) ||
+                if((!_subscribers[i].DirectDetectionOnly && (targetDistance <= _subscribers[i].DetectionDistance.y)) ||
                    (_subscribers[i].Spectation.HasFlag(detectionSide) && targetDistance <= _subscribers[i].DetectionDistance.y) || // Direct view
                    (!_subscribers[i].Spectation.HasFlag(detectionSide) && targetDistance <= _subscribers[i].DetectionDistance.x))  // Indirect view
                 {
                     if(_subscribers[i].Target == null)
+                    {
                         _subscribers[i].Target = _target.Transform;
+                        _subscribers[i].ResetTargetDistance();
+                    }
                 }
                 else
                 {

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6789599863681445657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5924806863505936751}
+  m_Layer: 7
+  m_Name: WeaponPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5924806863505936751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789599863681445657}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8, y: 0.39999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8577351422624667919}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7747289638823313738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,6 +133,60 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &732954972172840300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485010779124384795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994a3e7157fb4567a147f9c9597e68db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5523616013953142657}
+        m_TargetAssemblyTypeName: BlueHood.Behaviour.PlayerInputHandler, Behaviour
+        m_MethodName: OnEndAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1963016172446528107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485010779124384795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfacd93a06674f48be0501fa5bf7e302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2756314951715215278}
+        m_TargetAssemblyTypeName: BlueHood.Weapons.DamageableWeapon, Weapons
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3855019257258745636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +200,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reverse: 0
+--- !u!114 &8756620722237076311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485010779124384795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283c505bb39c4ac09cbfa21a6cd78e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5523616013953142657}
+        m_TargetAssemblyTypeName: BlueHood.Behaviour.PlayerInputHandler, Behaviour
+        m_MethodName: OnBeginAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7111578421356360694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 662732850170671804, guid: 4999bed3e51f445f2b02ed10ac241ed0, type: 3}
@@ -157,6 +269,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_Size: {x: 0.7, y: 1}
   m_Direction: 0
+--- !u!114 &2756314951715215278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111578421356360694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1595179a13f14eed982525fcf35f4ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivot: {fileID: 5924806863505936751}
+  _hitObject: {fileID: 3575708465991897393, guid: 81a7feaf5b3d546b2b646100e8a93298, type: 3}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1280
+  _range: 1
+  _damage: 1
 --- !u!114 &2843587485277890630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +317,7 @@ MonoBehaviour:
         m_CallState: 2
   _maxHealth: 3
   _health: 3
---- !u!114 &5308797200959561094
+--- !u!114 &5523616013953142657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,14 +326,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7111578421356360694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ded372286c4010a1f760971e603f99, type: 3}
+  m_Script: {fileID: 11500000, guid: f90e4e74f82854d8d835473bfd3581bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 9071265184540091666}
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
-  _movementAmount: {x: 10, y: 20}
+  _movementAmount: {x: 8, y: 20}
+  _inAirSpeedScale: 0.75
   _groundCheck: 0.05
 --- !u!114 &5893816730174628596
 MonoBehaviour:
@@ -221,8 +353,8 @@ MonoBehaviour:
   _onDead:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5308797200959561094}
-        m_TargetAssemblyTypeName: BlueHood.Behaviour.Movement, Behaviour
+      - m_Target: {fileID: 5523616013953142657}
+        m_TargetAssemblyTypeName: BlueHood.Behaviour.PlayerInputHandler, Behaviour
         m_MethodName: OnDead
         m_Mode: 1
         m_Arguments:
@@ -236,5 +368,10 @@ MonoBehaviour:
 --- !u!4 &7487263702965845255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 895086345802005581, guid: 4999bed3e51f445f2b02ed10ac241ed0, type: 3}
+  m_PrefabInstance: {fileID: 7747289638823313738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8577351422624667919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2056800660872812613, guid: 4999bed3e51f445f2b02ed10ac241ed0, type: 3}
   m_PrefabInstance: {fileID: 7747289638823313738}
   m_PrefabAsset: {fileID: 0}

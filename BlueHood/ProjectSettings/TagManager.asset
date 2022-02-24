@@ -17,7 +17,7 @@ TagManager:
   - Obstacle
   - Item
   - Room
-  - 
+  - ItemGrounded
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Enemies
+    uniqueID: 2337959315
+    locked: 0
+  - name: GFX
+    uniqueID: 2377197481
+    locked: 0
+  - name: Player
+    uniqueID: 3003678131
+    locked: 0
+  - name: UI
+    uniqueID: 155028449
     locked: 0

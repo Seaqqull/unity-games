@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -9,19 +10,23 @@ namespace BlueHood.Behaviour.Enemies
         [SerializeField] private Data.Type _type;
         [SerializeField] protected Data.State _state;
         [SerializeField] protected Data.ViewDirection _spectation;
-        [Header("Target")]
-        [SerializeField] protected Transform _target;
-        [Header("Properties")]
+        [Header("Path")]
         [SerializeField] protected Animator _animator;
-        [SerializeField] protected Navigation.NavigationContainer _path;
+        [SerializeField] protected Navigation.NavigationContainer _navigation;
         [SerializeField] protected float _movementSpeed = 2.5f;
         [SerializeField] protected float _minimumPathDistance;
+        [Header("Target")]
+        [SerializeField] protected Transform _target;
+        [Space]
         [SerializeField] protected float _minimumTargetDistance;
         [SerializeField] protected float _distanceToTarget;
         [SerializeField] protected Vector2 _targetDetectionDistance;
         [SerializeField] protected bool _onlyDirectDetection = true;
         [SerializeField] private bool _wasInPursuit;
 
+        protected Vector2 _targetDetectionDistanceSquared;
+        protected float _minimumTargetDistanceSquared;
+        protected float _minimumPathDistanceSquared;
         protected Vector2 _movementDirection;
         protected bool _movementPerformed;
         protected Coroutine _pathDelay;
@@ -30,7 +35,7 @@ namespace BlueHood.Behaviour.Enemies
         
         protected bool PathValid
         {
-            get => (_path != null) && (_pathDelay == null);
+            get => (_navigation != null) && (_pathDelay == null);
         }
 
         public Data.ViewDirection Spectation
@@ -39,7 +44,7 @@ namespace BlueHood.Behaviour.Enemies
         }
         public Vector2 DetectionDistance
         {
-            get => _targetDetectionDistance;
+            get => _targetDetectionDistanceSquared;
         }
         public bool DirectDetectionOnly
         {
@@ -47,16 +52,19 @@ namespace BlueHood.Behaviour.Enemies
         }
         public bool ReachedPathPoint
         {
-            get => (_distanceToTarget <= _minimumPathDistance);
+            get => (_distanceToTarget <= _minimumPathDistanceSquared);
         }
         public bool InAttackRange
         {
-            get { return (Mathf.Sqrt(_distanceToTarget) <= _minimumTargetDistance); }
+            get => (_distanceToTarget <= _minimumTargetDistanceSquared);
         }
         public Transform Target
         {
             get => _target;
-            set => _target = value;
+            set
+            {
+                _target = value;
+            }
         }
         
         
@@ -67,6 +75,10 @@ namespace BlueHood.Behaviour.Enemies
             _collider = GetComponent<Collider2D>();
             _distanceToTarget = float.MaxValue;
             _pathIndex = 0;
+
+            _targetDetectionDistanceSquared = Vector2.Scale(_targetDetectionDistance, _targetDetectionDistance);
+            _minimumTargetDistanceSquared = _minimumTargetDistance * _minimumTargetDistance;
+            _minimumPathDistanceSquared = _minimumPathDistance * _minimumPathDistance;
         }
 
         protected void Update()
@@ -75,12 +87,12 @@ namespace BlueHood.Behaviour.Enemies
 
             if((_target == null) && PathValid && ReachedPathPoint)
             {
-                var pathPoint = _path.GetPoint(_pathIndex);
+                var pathPoint = _navigation.GetPoint(_pathIndex);
                 _distanceToTarget = float.MaxValue;
 
                 if (pathPoint.Action == Navigation.Data.PointAction.Continue)
                 {
-                    _path.GetDestination(ref _pathIndex);
+                    _navigation.GetDestination(ref _pathIndex);
                 }
                 else if (pathPoint.Action == Navigation.Data.PointAction.Stop)
                 {
@@ -88,7 +100,7 @@ namespace BlueHood.Behaviour.Enemies
                     _state = Data.State.Idle;
 
                     _pathDelay = RunLaterValued(()=> {
-                        _path.GetDestination(ref _pathIndex);
+                        _navigation.GetDestination(ref _pathIndex);
                         _pathDelay = null;
                     }, pathPoint.TransferDelay);
                 }
@@ -108,7 +120,7 @@ namespace BlueHood.Behaviour.Enemies
                 return;
 
             Vector2 destinationPoint = (_target == null)?
-                (_path?.GetPathPosition(_pathIndex) ?? Position) : _target.position;
+                (_navigation?.GetPathPosition(_pathIndex) ?? Position) : _target.position;
 
             _movementPerformed = false;
 
@@ -146,9 +158,7 @@ namespace BlueHood.Behaviour.Enemies
             OnUpdatePath(destination);
 
             if(MovementNeeded())
-            {
                 OnUpdateMovement();
-            }
         }
 
 
@@ -156,9 +166,10 @@ namespace BlueHood.Behaviour.Enemies
         protected abstract void OnUpdatePath(Vector2 destination);
 
 
-        public virtual void OnAttack()
+        public void ResetTargetDistance()
         {
-            // Weapon.Shot
+            _distanceToTarget = Single.MaxValue;
+
         }
 
         public virtual void OnEndAttack()
@@ -171,6 +182,13 @@ namespace BlueHood.Behaviour.Enemies
         {
             _state = Data.State.Attacking;
             _animator.SetBool(Utility.Constants.Animation.ATTACK, true);
+        }
+
+        protected override void OnHealthMinus()
+        {
+            base.OnHealthMinus();
+            
+            _animator.SetTrigger(IsDead? Utility.Constants.Animation.DEAD : Utility.Constants.Animation.DAMAGE);
         }
     }
 }

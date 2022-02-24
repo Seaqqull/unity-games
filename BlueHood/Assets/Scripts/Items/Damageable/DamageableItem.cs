@@ -8,6 +8,21 @@ namespace BlueHood.Items.Damageable
     {
         [SerializeField] protected int _health;
 
+        public GameObject GameObject
+        {
+            get => GameObj;
+        }
+        public Rigidbody2D Body { get; protected set; }
+        
+        
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            Body = GetComponent<Rigidbody2D>();
+        }
+
 
         protected abstract void OnDamage();
         
@@ -19,6 +34,11 @@ namespace BlueHood.Items.Damageable
                 _health = 0;
             
             OnDamage();
+        }
+
+        public virtual void ApplyForce(Vector2 direction, float power, ForceMode2D force = ForceMode2D.Force)
+        {
+            
         }
     }
 }
